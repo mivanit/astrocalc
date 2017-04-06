@@ -1,6 +1,6 @@
 #Michael Ivanitskiy
 #Astronomical calculator
-#version 0.4.0
+#version 0.4.1
 #general object
 
 class gen_obj(object):
@@ -9,10 +9,10 @@ class gen_obj(object):
 		#basic properties
 		self.name = "null"		#object name
 		self.mass = -1			#mass
-		radius = -1				#radius
-		temp = -1				#surface temperature
-		grav_surface = -1		#surface gravity
-		power = -1				#emissive power
+		self.radius = -1				#radius
+		self.temp = -1				#surface temperature
+		self.grav_surface = -1		#surface gravity
+		self.power = -1				#emissive power
 		self.mag_abs = -1		#absolute magnitude
 		
 		self.junk = -1			#junk variable for testing
@@ -39,3 +39,6 @@ class gen_obj(object):
 		print "checking " + name + " changes"
 		self.push_dict()
 		calc.compare_dicts(vals_init, self.vals)
+		
+		
+		

@@ -1,6 +1,6 @@
 #Michael Ivanitskiy
 #Astronomical calculator
-#version 0.4.0
+#version 0.4.1
 #main file
 
 from math import*
@@ -12,21 +12,25 @@ from visual.graph import *
 
 import csv
 
-import graph_util
-import gen_calc
-import star
+#import graph_util_f
+import gen_calc_f
+from gen_calc_f import calc
+import star_f
+import blackhole_f
 import vals
+
 
 type_float = type(1.1)
 type_int = type(1)
 
 
-#calculation constants
-comparison_margin = .05
+#write code here
 
-#graph = graph_util()
-	
-calc = gen_calc()
+
+
+
+
+
 
 
 input("Press enter to exit")

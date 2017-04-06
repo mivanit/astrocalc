@@ -1,7 +1,12 @@
 #Michael Ivanitskiy
 #Astronomical calculator
-#version 0.4.0
+#version 0.4.1
 #general calculation class
+
+import vals
+
+#calculation error margin to print changes
+comparison_margin = 0.05
 
 #general, not always obj based calculations
 class gen_calc(object):
@@ -50,3 +55,7 @@ class gen_calc(object):
 		frac_t = G * mass * acr_rate
 		frac_b = 4 * pi * s_b * (radius ** 3)
 		return ((frac_t/frac_b)** 0.25)
+		
+		
+
+calc = gen_calc()

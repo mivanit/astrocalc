@@ -1,7 +1,13 @@
 #Michael Ivanitskiy
 #Astronomical calculator
-#version 0.4.0
+#version 0.4.1
 #graph utility class
+
+from visual import *
+from visual.graph import *
+
+import vals
+import gen_calc_f
 
 class graph_util(object):
 	graph_disp = gdisplay(foreground=color.black, background= color.white,
@@ -12,20 +18,20 @@ class graph_util(object):
 
 	def acr_tester(self):
 		#star constants
-		acr_rate = val_repo.mass_sun * 1e-6 / val_repo.year
+		acr_rate = sun.mass * 1e-6 / year
 
-		radius = val_repo.AU
+		radius = AU
 
-		while radius <= (val_repo.AU * 150):
+		while radius <= (AU * 150):
 			rate(10)
 			
 			temp = calc.accretion_disk_temp(star_mass, acr_rate, radius)
 
 			if (19<temp<21):
 				print "temp:\t" + str(temp)
-				print "radius:\t" + str(radius/val_repo.AU) + "\n"
+				print "radius:\t" + str(radius/AU) + "\n"
 
-			self.graph_curve.plot(pos=(radius/val_repo.AU, temp))
+			self.graph_curve.plot(pos=(radius/AU, temp))
 			
-			radius = radius + val_repo.AU
+			radius = radius + AU
 

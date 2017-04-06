@@ -1,28 +1,33 @@
 #Michael Ivanitskiy
 #Astronomical calculator
-#version 0.4.0
+#version 0.4.1
 #star object
 
-import graph_util
-import gen_calc
-import gen_obj
-import star
-import solar_val
+import gen_calc_f
+from gen_obj_f import gen_obj
+import star_f
+import vals
 
 #black hole object
 class black_hole(gen_obj):
 	def __init__(self):
+			#declare class specific vars
+			self.lifetime = -1
+			self.L_peak = -1
+			
 			#call parent constructor
-			super(gen_obj,self).__init__()			
-			lifetime = -1
-			L_peak = -1
+			#called after variables because push_dict inheritance is weird
+			super(black_hole,self).__init__()
+			
+			#fill dictionary
+			self.push_dict()
 		
 	#function to push values onto dictionary
 	def push_dict(self):
 		self.push_dict()
 		vals_init = deepcopy(self.vals)
 		
-		super(gen_obj,self).push_dict()
+		super(black_hole,self).push_dict()
 		
 		self.vals["L_peak"] = self.L_peak
 		self.vals["lifetime"] = self.lifetime

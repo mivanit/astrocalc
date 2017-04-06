@@ -1,13 +1,11 @@
 #Michael Ivanitskiy
 #Astronomical calculator
-#version 0.4.0
+#version 0.4.1
 #star object
 
-import graph_util
-import gen_calc
-import gen_obj
-import star
-import solar_val
+import gen_calc_f
+from gen_obj_f import gen_obj
+import vals
 
 #dictionary of spectral types to temperature
 spectral_type_temp = {}
@@ -28,12 +26,9 @@ with open("specType_MS.txt","r") as f_spec:
 class star(gen_obj):
 
 	def __init__(self):
-		#call parent constructor
-		super(gen_obj,self).__init__()
-		
-		#properties
-		self.on_MS = True				#bool for whether star is on main sequence
-		#convert this to distance from MS?
+		#declare class specific vars
+		self.on_MS = True		#bool for whether star is on main sequence
+		#change this to distance from MS?
 		self.spectral_type = "null"
 		
 		self.mass_sols = -1		#mass, in solar units
@@ -42,12 +37,18 @@ class star(gen_obj):
 		self.E_grav = -1		#gravitational collapse potential energy
 		self.lifetime = -1		#lifestpan
 	
+		#call parent constructor
+		#called after variables because push_dict inheritance is weird
+		super(star, self).__init__()
+	
 		#fill dictionary
 		self.push_dict()
-	
+
+
 	#function to push values onto dictionary
 	def push_dict(self):
-		super(gen_obj,self).push_dict()
+		#parent push dictionary function for universal vars
+		super(star,self).push_dict()
 		
 		self.vals["on_MS"] = self.on_MS
 		self.vals["spectral_type"] = self.spectral_type					
@@ -193,4 +194,6 @@ class star(gen_obj):
 	def calc_mag_app(self, dist):
 		mag_app = calc.mag_app(self, self.power, dist)
 		return mag_app
-		
+	
+	
+	

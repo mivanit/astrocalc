@@ -1,12 +1,14 @@
 #Michael Ivanitskiy
 #Astronomical calculator
-#version 0.4.0
+#version 0.4.1
 #common values
 
-import graph_util
-import gen_calc
-import gen_obj
-import star
+import gen_calc_f
+from gen_obj_f import gen_obj
+import star_f
+
+#calculation error margin to print changes
+comparison_margin = 0.05
 
 #mathematical consts
 e = 2.71828
@@ -32,11 +34,11 @@ gee = 9.80665
 #"gee" so as to avoid confusion 
 #with gravitational constant
 
-other
+#other
 universe_age = 13.82e9 * year
 
 #sun values
-sun = star()
+sun = star_f.star()
 sun.mass = 1.989e30
 sun.mag_abs = -26.74
 sun.lifetime = (10**10) * year
