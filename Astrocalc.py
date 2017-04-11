@@ -47,17 +47,3 @@ print sun.temp
 
 
 input("Press enter to exit")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
