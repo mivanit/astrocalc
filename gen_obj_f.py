@@ -3,6 +3,12 @@
 #version 0.4.1
 #general object
 
+from math import*
+from copy import*
+from copy import deepcopy
+
+from vals import *
+
 class gen_obj(object):
 
 	def __init__(self):

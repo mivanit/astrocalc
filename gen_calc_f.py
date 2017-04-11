@@ -3,7 +3,11 @@
 #version 0.4.1
 #general calculation class
 
-import vals
+from math import*
+from copy import*
+from copy import deepcopy
+
+from vals import *
 
 #calculation error margin to print changes
 comparison_margin = 0.05

@@ -3,9 +3,14 @@
 #version 0.4.1
 #star object
 
+from math import*
+from copy import*
+from copy import deepcopy
+
 import gen_calc_f
 from gen_obj_f import gen_obj
-import vals
+from vals import*
+from vals_obj import*
 
 #dictionary of spectral types to temperature
 spectral_type_temp = {}
@@ -99,6 +104,9 @@ class star(gen_obj):
 		
 		self.temp = T
 		self.L_peak = b_wien / T
+		if radius > 0:
+			temp_power = (T**4)*s_b*4*pi*(self.radius**2)
+			self.set_lum(temp_power)
 
 		self.check_changes("set_temp", vals_init, self.vals)
 		

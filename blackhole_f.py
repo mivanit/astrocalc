@@ -3,10 +3,14 @@
 #version 0.4.1
 #star object
 
+from math import*
+from copy import*
+from copy import deepcopy
+
 import gen_calc_f
 from gen_obj_f import gen_obj
 import star_f
-import vals
+from vals import *
 
 #black hole object
 class black_hole(gen_obj):
