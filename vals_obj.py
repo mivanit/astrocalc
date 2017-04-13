@@ -31,5 +31,12 @@ sun.grav_surface = gee
 sun.push_dict()
 
 #proton values
-proton = gen_obj()
+proton = particle()
 proton.mass = 1.672621898e-27
+proton.charge =	1.6021766208e-19
+proton.radius = 0.85e15
+
+#electron values
+electron = particle()
+electron.mass = 9.10938356e-31
+electron.charge =	1.6021766208e-19
