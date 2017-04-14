@@ -20,7 +20,7 @@ class particle(gen_obj):
 
 		#call parent constructor
 		#called after variables because push_dict inheritance is weird
-		super(star, self).__init__()
+		super(particle, self).__init__()
 
 		#fill dictionary
 		self.push_dict()
@@ -28,6 +28,6 @@ class particle(gen_obj):
 	#function to push values onto dictionary
 	def push_dict(self):
 		#parent push dictionary function for universal vars
-		super(star,self).push_dict()
+		super(particle,self).push_dict()
 
 		self.vals["charge"] = self.charge

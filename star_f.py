@@ -10,7 +10,7 @@ from copy import deepcopy
 import gen_calc_f
 from gen_obj_f import gen_obj
 from vals import*
-from vals_obj import*
+#from vals_obj import*
 
 #dictionary of spectral types to temperature
 spectral_type_temp = {}
@@ -26,6 +26,8 @@ with open("specType_MS.txt","r") as f_spec:
 		spectral_type_lum_MS[v_spec] = float(data[i][3])
 
 #TODO - dictionary of stellar types
+
+sun_mass = 1.989e30
 
 #star object
 class star(gen_obj):
@@ -75,7 +77,7 @@ class star(gen_obj):
 		self.push_dict()
 		vals_init = deepcopy(self.vals)
 
-		self.mass_sols = mass / sun.mass
+		self.mass_sols = mass / sun_mass
 		self.mass = mass
 		if (approx==True):
 			if (self.on_MS==True):
@@ -122,7 +124,7 @@ class star(gen_obj):
 		if (approx==True) and (self.on_MS==True):
 			#assuming on main sequence, approximate mass from luminosity
 			self.mass_sols = (self.power_sols)**(1/3.5)
-			self.set_mass(self.mass_sols * sun.mass, True)
+			self.set_mass(self.mass_sols * sun_mass, True)
 
 		self.check_changes("set_lum", vals_init, self.vals)
 
