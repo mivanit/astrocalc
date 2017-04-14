@@ -3,15 +3,15 @@
 #version 0.4.1
 #main file
 
-print "Welcome to Astrocalc version 0.4.1"
-print "by Michael Ivanitskiy"
+print ("Welcome to Astrocalc version 0.4.1")
+print ("by Michael Ivanitskiy")
 
 from math import*
 from copy import*
 from copy import deepcopy
 
-from visual import *
-from visual.graph import *
+#from visual import *
+#from visual.graph import *
 
 import csv
 
@@ -21,7 +21,7 @@ from gen_calc_f import calc
 import star_f
 import blackhole_f
 from vals import *
-from vals_obj import sun
+from vals_obj import *
 
 
 type_float = type(1.1)
@@ -38,12 +38,12 @@ type_int = type(1)
 #print "cubic meters of interstellar space:	" + str(cubic_meters)
 #print "mass of interstellar space:	" + str(cubic_meters * proton.mass)
 
-sun.set_mass(sun.mass)
+#sun.set_mass(sun.mass)
 
-print sun.temp
+#print sun.temp
 
-
-
+print (electron.mass * 2 * (c**2))
+print (proton.mass * 2 * (c**2))
 
 
 input("Press enter to exit")

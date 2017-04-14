@@ -22,11 +22,11 @@ class gen_calc(object):
 
 	def mom_angular_sphere(self, radius, mass):
 		return 2 * masss * (radius**2) / 5
-		
+
 	#calculate absolute magnitude by calling apparent magnitude function for 10 parsecs
 	def mag_abs(self, lum):
 		return self.mag_app(lum, 10 * val_repo.parsec)
-	
+
 	#calculate distance from apparent and absolute magnitude
 	def dist_from_magnitudes(self, mag_app, mag_abs):
 		dist = ((10**((mag_app - mag_abs) * 0.2 ))) * (10 * val_repo.parsec)
@@ -34,10 +34,10 @@ class gen_calc(object):
 
 	def compare_dicts(self, A, B):
 		if len(A) != len(B):
-			print "ERROR: mismatched dictionary size"
-			print len(A)
-			print len(B)
-			print "\n"
+			print ("ERROR: mismatched dictionary size")
+			print (len(A))
+			print (len(B))
+			print ("\n")
 		for key in A:
 			if (type(A[key]) == type_int) or (type(A[key]) == type_float):
 				self.compare_val_num(A[key], B[key], key, True)
@@ -48,18 +48,18 @@ class gen_calc(object):
 		diff = abs(A - B)
 		if abs(diff/A) > margin:
 			if A == -1:
-				print name.ljust(14), "\t\thas been set to \t", B
+				print (name.ljust(14), "\t\thas been set to \t", B)
 			elif A != -1:
-				print name.ljust(14), "\t\thas been modified by ", diff*100, " %"
+				print (name.ljust(14), "\t\thas been modified by ", diff*100, " %")
 				if verbose == True:
-					print "\t from its original value of ", A, " to ", B
+					print ("\t from its original value of ", A, " to ", B)
 
 
 	def accretion_disk_temp(self, mass, acr_rate, radius):
 		frac_t = G * mass * acr_rate
 		frac_b = 4 * pi * s_b * (radius ** 3)
 		return ((frac_t/frac_b)** 0.25)
-		
-		
+
+
 
 calc = gen_calc()

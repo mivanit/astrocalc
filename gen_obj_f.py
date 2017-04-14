@@ -42,6 +42,6 @@ class gen_obj(object):
 		self.vals["junk"] = self.junk
 
 	def check_changes(self, name, vals_init, vals):
-		print "checking " + name + " changes"
+		print ("checking " + name + " changes")
 		self.push_dict()
 		calc.compare_dicts(vals_init, self.vals)
