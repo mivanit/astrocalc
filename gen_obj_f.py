@@ -7,7 +7,8 @@ from math import*
 from copy import*
 from copy import deepcopy
 
-from vals import *
+from gen_calc_f import*
+from vals import*
 
 class gen_obj(object):
 
@@ -20,6 +21,7 @@ class gen_obj(object):
 		self.grav_surface = -1		#surface gravity
 		self.power = -1				#emissive power
 		self.mag_abs = -1		#absolute magnitude
+		self.L_peak = -1		#peak emission wavelength
 
 		self.junk = -1			#junk variable for testing
 
@@ -38,6 +40,7 @@ class gen_obj(object):
 		self.vals["grav_surface"] = self.grav_surface
 		self.vals["power"] = self.power
 		self.vals["mag_abs"] = self.mag_abs
+		self.vals["L_peak"] = self.L_peak
 
 		self.vals["junk"] = self.junk
 
@@ -45,3 +48,27 @@ class gen_obj(object):
 		print ("checking " + name + " changes")
 		self.push_dict()
 		calc.compare_dicts(vals_init, self.vals)
+
+
+	#set peak wavelength
+	def set_Lpeak(self, L):
+		self.push_dict()
+		vals_init = deepcopy(self.vals)
+
+		self.L_peak = L
+		self.temp = b_wien / L
+
+		self.check_changes("set_Lpeak", vals_init, self.vals)
+
+	#set temperature
+	def set_temp(self, T):
+		self.push_dict()
+		vals_init = deepcopy(self.vals)
+
+		self.temp = T
+		self.L_peak = b_wien / T
+		if radius > 0:
+			temp_power = (T**4)*s_b*4*pi*(self.radius**2)
+			self.set_lum(temp_power)
+
+		self.check_changes("set_temp", vals_init, self.vals)

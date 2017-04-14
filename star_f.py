@@ -39,7 +39,6 @@ class star(gen_obj):
 		self.spectral_type = "null"
 
 		self.mass_sols = -1		#mass, in solar units
-		self.L_peak = -1		#peak emission wavelength
 		self.power_sols = -1	#power, in solar units
 		self.E_grav = -1		#gravitational collapse potential energy
 		self.lifetime = -1		#lifestpan
@@ -63,7 +62,6 @@ class star(gen_obj):
 		self.vals["radius"] = self.radius
 		self.vals["temp"] = self.temp
 		self.vals["grav_surface"] = self.grav_surface
-		self.vals["L_peak"] = self.L_peak
 		self.vals["power"] = self.power
 		self.vals["power_sols"] = self.power_sols
 		self.vals["mag_abs"] = self.mag_abs
@@ -86,31 +84,6 @@ class star(gen_obj):
 				self.calc_from_mass()
 
 		self.check_changes("set_mass", vals_init, self.vals)
-
-
-	#set peak wavelength
-	def set_Lpeak(self, L):
-		self.push_dict()
-		vals_init = deepcopy(self.vals)
-
-		self.L_peak = L
-		self.temp = b_wien / L
-
-		self.check_changes("set_Lpeak", vals_init, self.vals)
-
-
-	#set temperature
-	def set_temp(self, T):
-		self.push_dict()
-		vals_init = deepcopy(self.vals)
-
-		self.temp = T
-		self.L_peak = b_wien / T
-		if radius > 0:
-			temp_power = (T**4)*s_b*4*pi*(self.radius**2)
-			self.set_lum(temp_power)
-
-		self.check_changes("set_temp", vals_init, self.vals)
 
 
 	#set luminosity/power

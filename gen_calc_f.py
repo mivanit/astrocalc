@@ -39,7 +39,7 @@ class gen_calc(object):
 			print (len(B))
 			print ("\n")
 		for key in A:
-			if (type(A[key]) == type_int) or (type(A[key]) == type_float):
+			if (isinstance( A[key], ( int, float ) )):
 				self.compare_val_num(A[key], B[key], key, True)
 
 
@@ -60,6 +60,12 @@ class gen_calc(object):
 		frac_b = 4 * pi * s_b * (radius ** 3)
 		return ((frac_t/frac_b)** 0.25)
 
+	def photon_L_to_energy(self, L):
+		return (h * c / L)
+
+
+	def photon_energy_to_L(self, E):
+		return (h * c / E)
 
 
 calc = gen_calc()

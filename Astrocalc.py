@@ -16,10 +16,9 @@ from copy import deepcopy
 import csv
 
 #import graph_util_f
-import gen_calc_f
-from gen_calc_f import calc
-import star_f
-import blackhole_f
+from gen_calc_f import*
+from star_f import*
+from blackhole_f import*
 from vals import *
 from vals_obj import *
 
@@ -27,6 +26,8 @@ from vals_obj import *
 type_float = type(1.1)
 type_int = type(1)
 
+
+calc_t = gen_calc()
 
 #write code here
 
@@ -42,8 +43,20 @@ type_int = type(1)
 
 #print sun.temp
 
-print (electron.mass * 2 * (c**2))
-print (proton.mass * 2 * (c**2))
+E_e = (electron.mass * 2 * (c**2))
+E_p = (proton.mass * 2 * (c**2))
+
+#test BlackBody
+bb = gen_obj()
+
+t_wavelength = calc_t.photon_energy_to_L(E_e)
+bb.set_Lpeak(t_wavelength)
+print (bb.temp)
+
+t_wavelength = calc_t.photon_energy_to_L(E_p)
+bb.set_Lpeak(t_wavelength)
+print (bb.temp)
+
 
 
 input("Press enter to exit")
